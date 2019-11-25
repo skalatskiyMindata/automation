@@ -1,6 +1,7 @@
 package DammAutomationFramework.webElements.page.estrellaDamm;
 
 import DammAutomationFramework.webElements.component.AgeCheckComponent;
+import DammAutomationFramework.webElements.component.MenuBannerComponent;
 import com.github.webdriverextensions.WebPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +11,7 @@ import static java.lang.String.format;
 
 public class HomePage extends WebPage {
 
-    @FindBy(className = "menu-banner") private WebElement menu;
+    @FindBy(className = "menu-banner") private MenuBannerComponent menu;
     @FindBy(id = "pano_home-intro-video") private WebElement introVideoSection;
     @FindBy(id = "pano_damm") private WebElement dammInfoSection;
     @FindBy(id = "pano_slider") private WebElement laGuiaSection;
@@ -51,5 +52,4 @@ public class HomePage extends WebPage {
         loginRegister.getLocation();
         loginRegister.click();
     }
-
 }
