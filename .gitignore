@@ -1,2 +1,3 @@
 /web/screenshots/
-/web/target
+/web/target/
+.idea
