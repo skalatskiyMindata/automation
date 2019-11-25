@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import static com.github.webdriverextensions.Bot.*;
 import static java.lang.String.format;
 
-public class MainPage extends WebPage {
+public class HomePage extends WebPage {
 
     @FindBy(className = "menu-banner") private WebElement menu;
     @FindBy(id = "pano_home-intro-video") private WebElement introVideoSection;

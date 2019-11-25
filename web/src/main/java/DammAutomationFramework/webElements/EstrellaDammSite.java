@@ -2,7 +2,7 @@ package DammAutomationFramework.webElements;
 
 import DammAutomationFramework.webElements.component.CookiesComponent;
 import DammAutomationFramework.webElements.component.RegisterComponent;
-import DammAutomationFramework.webElements.page.estrellaDamm.MainPage;
+import DammAutomationFramework.webElements.page.estrellaDamm.HomePage;
 import com.github.webdriverextensions.WebSite;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +22,7 @@ public class EstrellaDammSite extends WebSite {
     public RegisterComponent registerComponent;
 
     // Pages
-    public MainPage mainPage;
+    public HomePage mainPage;
 
     public void open(Object... arguments) {
         open(url);
