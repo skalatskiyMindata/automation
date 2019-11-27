@@ -2,6 +2,7 @@ package DammAutomationFramework.webElements;
 
 import DammAutomationFramework.webElements.component.CookiesComponent;
 import DammAutomationFramework.webElements.component.RegisterComponent;
+import DammAutomationFramework.webElements.page.estrellaDamm.CervezaPage;
 import DammAutomationFramework.webElements.page.estrellaDamm.HomePage;
 import DammAutomationFramework.webElements.page.estrellaDamm.PeliculasPage;
 import com.github.webdriverextensions.WebSite;
@@ -24,7 +25,9 @@ public class EstrellaDammSite extends WebSite {
 
     // Pages
     public HomePage mainPage;
+    public CervezaPage cervezaPage;
     public PeliculasPage peliculasPage;
+
 
     public void open(Object... arguments) {
         open(url);
