@@ -25,6 +25,8 @@ public class HomePage extends WebPage {
     @FindBy(css = "button.js-close-prehome")
     public WebElement accessButton;
 
+    public MenuBannerComponent menuBanner;
+
     @Override
     public void open(Object... arguments) {
         String webURL = (String) arguments[0];
