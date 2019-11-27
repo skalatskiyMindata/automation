@@ -38,9 +38,9 @@ public class CervezaPage extends WebPage {
 
     @Override
     public void assertIsOpen(Object... arguments) {
-        for (WebElement items: sections){
-            Bot.scrollTo(items);
-            assertIsDisplayed(items);
+        for (WebElement item: sections){
+            Bot.scrollTo(item);
+            assertIsDisplayed(item);
             //waitFor(3);
         }
     }
