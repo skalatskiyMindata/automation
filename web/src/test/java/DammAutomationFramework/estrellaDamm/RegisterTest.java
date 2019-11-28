@@ -43,28 +43,55 @@ public class RegisterTest {
         driver().manage().timeouts().pageLoadTimeout(30, SECONDS);
     }
 
-    @Test //TC60
-    public void registerFormOnHomePage() throws Exception {
+    public void mainAccessFlow () {
         estrellaDammSite.mainPage.open(url);
         estrellaDammSite.cookiesComponent.clickOnAcceptCookies();
         estrellaDammSite.mainPage.clickOnAccessOnAgeCheck();
         estrellaDammSite.mainPage.assertIsOpen();
+    }
+
+    @Test //TC60
+    public void registerFormOnHomePage() throws Exception {
+        mainAccessFlow();
         estrellaDammSite.mainPage.clickOnLoginRegisterIcon();
         estrellaDammSite.registerComponent.failIfIsNotDisplayed();
     }
 
     @Test //TC61
     public void registerFormOnGuiaPage() throws Exception {
-        estrellaDammSite.mainPage.open(url);
-        estrellaDammSite.cookiesComponent.clickOnAcceptCookies();
-        estrellaDammSite.mainPage.clickOnAccessOnAgeCheck();
-        estrellaDammSite.mainPage.assertIsOpen();
+        mainAccessFlow();
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_GUIDE);
         estrellaDammSite.guidePage.assertIsOpen();
 
         SpotItem selectedSpot = estrellaDammSite.guidePage.pickSpecificResult("first");
         estrellaDammSite.guidePage.clickOnFavoriteIconOnASpecificSpot(selectedSpot);
-        estrellaDammSite.register2Component.failIfIsNotDisplayed();
+        estrellaDammSite.register2Component.failIfIsNotDisplayedOnResults();
+    }
+
+    @Test //TC62
+    public void registerFormOnSpotDetails() throws Exception {
+        mainAccessFlow();
+        estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_GUIDE);
+        estrellaDammSite.guidePage.assertIsOpen();
+
+        SpotItem selectedSpot = estrellaDammSite.guidePage.pickSpecificResult("first");
+        estrellaDammSite.guidePage.clickOnASpecificSpot(selectedSpot);
+        estrellaDammSite.spotDetailsPage.assertIsOpen();
+        estrellaDammSite.spotDetailsPage.clickOnFavoriteIconOnBanner();
+        estrellaDammSite.register2Component.failIfIsNotDisplayedOnDetails();
+    }
+
+    @Test //TC63
+    public void registerFormOnAgendaPage() throws Exception {
+        mainAccessFlow();
+        estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_GUIDE);
+        estrellaDammSite.guidePage.assertIsOpen();
+
+        SpotItem selectedSpot = estrellaDammSite.guidePage.pickSpecificResult("first");
+        estrellaDammSite.guidePage.clickOnASpecificSpot(selectedSpot);
+        estrellaDammSite.spotDetailsPage.assertIsOpen();
+        estrellaDammSite.spotDetailsPage.clickOnFavoriteIconOnBanner();
+        estrellaDammSite.register2Component.failIfIsNotDisplayedOnDetails();
     }
 
 }

@@ -19,6 +19,7 @@ public class GuidePage extends WebRepository {
     @FindBy(css = "div.grid-item") private List<SpotItem> spotResults;
 
     public void assertIsOpen(Object... arguments) {
+        waitForPageToLoad();
         assertIsDisplayed(guideMainContainer);
     }
 
@@ -46,6 +47,10 @@ public class GuidePage extends WebRepository {
         System.out.println("location: " + location);
 
         return selectedOption;
+    }
+
+    public void clickOnASpecificSpot (SpotItem spotItem) {
+        spotItem.click();
     }
 
     public void clickOnFavoriteIconOnASpecificSpot (SpotItem spotItem) {

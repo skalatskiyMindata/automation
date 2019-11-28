@@ -9,16 +9,23 @@ import static com.github.webdriverextensions.Bot.waitForElementToDisplay;
 
 public class Register2Component extends WebRepository {
 
-    // Model
-    @FindBy(css = "div#modal-login-place") private WebElement registerContainer;
-    @FindBy(id = "btn-fb-login") private WebElement registerByFacebookButton;
+    // TODO: Temporary until DammID is implemented
+    // For results page
+    @FindBy(css = "div#modal-login-place") private WebElement resultsAccessContainer;
+    @FindBy(css = "div#register-account") private WebElement resultsRegisterForm;
 
-    @FindBy(id = "register-account") private WebElement registerForm;
+    // For details page
+    @FindBy(css = "div#modal-login") private WebElement detailsAccessContainer;
+    @FindBy(css = "div#register-account3") private WebElement detailsRegisterForm;
 
 
-    //methods
-    public void failIfIsNotDisplayed() {
-        assertIsDisplayed(registerContainer);
-        assertIsDisplayed(registerForm);
+    public void failIfIsNotDisplayedOnResults() {
+        assertIsDisplayed(resultsAccessContainer);
+        assertIsDisplayed(resultsRegisterForm);
+    }
+
+    public void failIfIsNotDisplayedOnDetails() {
+        assertIsDisplayed(detailsAccessContainer);
+        assertIsDisplayed(detailsRegisterForm);
     }
 }

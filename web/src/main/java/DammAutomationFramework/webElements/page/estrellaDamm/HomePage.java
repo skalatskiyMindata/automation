@@ -37,6 +37,7 @@ public class HomePage extends WebPage {
 
     @Override
     public void assertIsOpen(Object... arguments) {
+        waitForPageToLoad();
         assertIsDisplayed(introVideoSection);
 //        assertIsDisplayed(dammInfoSection);
 //        assertIsDisplayed(laGuiaSection);
