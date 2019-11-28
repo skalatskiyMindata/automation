@@ -2,6 +2,7 @@ package DammAutomationFramework.webElements;
 
 import DammAutomationFramework.webElements.component.CookiesComponent;
 import DammAutomationFramework.webElements.component.RegisterComponent;
+import DammAutomationFramework.webElements.page.estrellaDamm.CervezaDiaADiaPage;
 import DammAutomationFramework.webElements.page.estrellaDamm.CervezaPage;
 import DammAutomationFramework.webElements.page.estrellaDamm.HomePage;
 import DammAutomationFramework.webElements.page.estrellaDamm.PeliculasPage;
@@ -26,6 +27,7 @@ public class EstrellaDammSite extends WebSite {
     // Pages
     public HomePage mainPage;
     public CervezaPage cervezaPage;
+    public CervezaDiaADiaPage diaADiaPage;
     public PeliculasPage peliculasPage;
 
 

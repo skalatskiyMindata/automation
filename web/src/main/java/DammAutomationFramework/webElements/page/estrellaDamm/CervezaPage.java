@@ -1,6 +1,8 @@
 package DammAutomationFramework.webElements.page.estrellaDamm;
 import com.github.webdriverextensions.Bot;
 import com.github.webdriverextensions.WebPage;
+import com.github.webdriverextensions.WebRepository;
+import com.github.webdriverextensions.WebSite;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +13,7 @@ import java.util.List;
 import static com.github.webdriverextensions.Bot.assertIsDisplayed;
 import static com.github.webdriverextensions.Bot.waitFor;
 
-public class CervezaPage extends WebPage {
+public class CervezaPage extends WebRepository {
 
    @FindAll({
        @FindBy(className = "historia"),
@@ -25,23 +27,13 @@ public class CervezaPage extends WebPage {
     })
     private List<WebElement> sections;
 
-    @FindBy(css = "button.js-close-prehome")
-    public WebElement accessButton;
 
 
-    @Override
-    public void open(Object... arguments) {
-        String webURL = (String) arguments[0];
-        System.out.println("webURL =" + webURL);
-        open(webURL);
-    }
-
-    @Override
     public void assertIsOpen(Object... arguments) {
         for (WebElement item: sections){
             Bot.scrollTo(item);
             assertIsDisplayed(item);
-            //waitFor(3);
+            waitFor(3);
         }
     }
 }

@@ -1,11 +1,19 @@
 package DammAutomationFramework.webElements.page.estrellaDamm;
+import com.github.webdriverextensions.Bot;
 import com.github.webdriverextensions.WebPage;
+import com.github.webdriverextensions.WebRepository;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static com.github.webdriverextensions.Bot.assertIsDisplayed;
+import java.util.function.Predicate;
 
-public class PeliculasPage extends WebPage {
+import static com.github.webdriverextensions.Bot.*;
+
+public class PeliculasPage extends WebRepository {
 
     @FindBy(id = "section-video1") private WebElement actoIIAmantesSection;
     @FindBy(id = "section-video2") private WebElement actoIAlmaSection;
@@ -20,21 +28,18 @@ public class PeliculasPage extends WebPage {
     @FindBy(id = "section-video11") private WebElement elBulliSection;
     @FindBy(id = "section-video12") private WebElement sanJuanSection;
     @FindBy(id = "section-video13") private WebElement formenteraSection;
-    @FindBy(css = "button.js-close-prehome")
-    public WebElement accessButton;
+    @FindBy(css = "#play-button") private WebElement playBtn;
 
-    @Override
-    public void open(Object... arguments) {
-        String webURL = (String) arguments[0];
-        System.out.println("webURL =" + webURL);
-        open(webURL);
-    }
 
-    @Override
+
+
     public void assertIsOpen(Object... arguments) {
         assertIsDisplayed(actoIIAmantesSection);
-        /*assertIsDisplayed(actoIAlmaSection);
-        assertIsDisplayed(cyranoSection);
+        waitFor(4);
+        scrollTo(actoIAlmaSection);
+        assertIsDisplayed(actoIAlmaSection);
+        waitFor(4);
+        /*assertIsDisplayed(cyranoSection);
         assertIsDisplayed(alexYJuliaSection);
         assertIsDisplayed(laVidaNuestraSection);
         assertIsDisplayed(laRecetaSection);
@@ -48,7 +53,11 @@ public class PeliculasPage extends WebPage {
     }
 
     public void clickOnAVideo() {
-        actoIIAmantesSection.click();
+        scrollTo(actoIAlmaSection);
+        waitFor(3);
+        playBtn.click();
+        waitFor(4);
+        //actoIAlmaSection.click();
     }
 
 }
