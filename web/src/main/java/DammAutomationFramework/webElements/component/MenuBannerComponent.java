@@ -21,6 +21,7 @@ public class MenuBannerComponent extends WebRepository {
     @FindBy(css = ".menu_El_día_a_día a") private WebElement dayToDayLink;
     @FindBy(css = ".menu_Sostenibilidad a") private WebElement sustainability;
     @FindBy(css = ".menu_La_Guía a") private WebElement theGuide;
+    @FindBy(css = ".menu_La_Agenda a") private WebElement agenda;
     @FindBy(css = ".menu_Tu_Rincón a") private WebElement yourSpot;
     @FindBy(css = ".menu_Visita_la_fábrica a") private WebElement visitBrewery;
 
@@ -37,6 +38,9 @@ public class MenuBannerComponent extends WebRepository {
                 break;
             case THE_GUIDE:
                 theGuide.click();
+                break;
+            case AGENDA:
+                agenda.click();
                 break;
             case YOUR_SPOT:
                 yourSpot.click();
