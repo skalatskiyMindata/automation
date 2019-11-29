@@ -18,7 +18,7 @@ public class GuidePage extends WebRepository {
     @FindBy(css = "div.laguia") private WebElement guideMainContainer;
     @FindBy(css = "div.grid-item") private List<SpotItem> spotResults;
 
-    public void assertIsOpen(Object... arguments) {
+    public void assertIsOpen() {
         waitForPageToLoad();
         assertIsDisplayed(guideMainContainer);
     }

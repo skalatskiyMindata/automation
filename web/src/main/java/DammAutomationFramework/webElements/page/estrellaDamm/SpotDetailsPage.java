@@ -17,7 +17,7 @@ public class SpotDetailsPage extends WebRepository {
     @FindBy(css = "section.subtitle-jornada") private WebElement subTitle;
     @FindBy(css = "div.laguia") private WebElement spotContent;
 
-    public void assertIsOpen(Object... arguments) {
+    public void assertIsOpen() {
         waitForPageToLoad();
         assertIsDisplayed(spotDetailsMainBody);
         assertIsDisplayed(spotBanner);
