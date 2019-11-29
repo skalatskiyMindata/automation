@@ -5,9 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static com.github.webdriverextensions.Bot.assertIsDisplayed;
-import static com.github.webdriverextensions.Bot.waitForElementToDisplay;
 
-public class Register2Component extends WebRepository {
+public class AccessGenericComponent extends WebRepository {
 
     // TODO: Temporary until DammID is implemented
     // For results page
@@ -19,13 +18,18 @@ public class Register2Component extends WebRepository {
     @FindBy(css = "div#register-account3") private WebElement detailsRegisterForm;
 
 
-    public void failIfIsNotDisplayedOnResults() {
+    public void failIfIsNotDisplayedOnGuia() {
         assertIsDisplayed(resultsAccessContainer);
         assertIsDisplayed(resultsRegisterForm);
     }
 
-    public void failIfIsNotDisplayedOnDetails() {
+    public void failIfIsNotDisplayedOnDetailsPage() {
         assertIsDisplayed(detailsAccessContainer);
         assertIsDisplayed(detailsRegisterForm);
+    }
+
+    public void failIfIsNotDisplayedOnAgenda() {
+        assertIsDisplayed(detailsAccessContainer);
+        assertIsDisplayed(resultsRegisterForm);
     }
 }

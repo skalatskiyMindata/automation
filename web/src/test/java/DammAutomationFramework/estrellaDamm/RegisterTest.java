@@ -1,18 +1,13 @@
 package DammAutomationFramework.estrellaDamm;
 
 import DammAutomationFramework.config.Properties;
-import DammAutomationFramework.data.LocationDetails;
-import DammAutomationFramework.data.UserDetails;
 import DammAutomationFramework.data.enums.MenuOption;
-import DammAutomationFramework.drivers.ChromeCapabilities;
-import DammAutomationFramework.utils.DataHandler;
 import DammAutomationFramework.webElements.EstrellaDammSite;
+import DammAutomationFramework.webElements.component.EventItem;
 import DammAutomationFramework.webElements.component.SpotItem;
 import com.github.webdriverextensions.junitrunner.WebDriverRunner;
-import com.github.webdriverextensions.junitrunner.annotations.Chrome;
 import com.github.webdriverextensions.junitrunner.annotations.Firefox;
 import com.github.webdriverextensions.junitrunner.annotations.ScreenshotsPath;
-import com.github.webdriverextensions.junitrunner.annotations.TakeScreenshotOnFailure;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static com.github.webdriverextensions.Bot.driver;
-import static com.github.webdriverextensions.Bot.takeScreenshot;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 @RunWith(WebDriverRunner.class)
@@ -62,10 +56,9 @@ public class RegisterTest {
         mainAccessFlow();
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_GUIDE);
         estrellaDammSite.guidePage.assertIsOpen();
-
         SpotItem selectedSpot = estrellaDammSite.guidePage.pickSpecificResult("first");
         estrellaDammSite.guidePage.clickOnFavoriteIconOnASpecificSpot(selectedSpot);
-        estrellaDammSite.register2Component.failIfIsNotDisplayedOnResults();
+        estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnGuia();
     }
 
     @Test //TC62
@@ -73,25 +66,33 @@ public class RegisterTest {
         mainAccessFlow();
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_GUIDE);
         estrellaDammSite.guidePage.assertIsOpen();
-
         SpotItem selectedSpot = estrellaDammSite.guidePage.pickSpecificResult("first");
         estrellaDammSite.guidePage.clickOnASpecificSpot(selectedSpot);
         estrellaDammSite.spotDetailsPage.assertIsOpen();
         estrellaDammSite.spotDetailsPage.clickOnFavoriteIconOnBanner();
-        estrellaDammSite.register2Component.failIfIsNotDisplayedOnDetails();
+        estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnDetailsPage();
     }
 
     @Test //TC63
     public void registerFormOnAgendaPage() throws Exception {
         mainAccessFlow();
-        estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_GUIDE);
-        estrellaDammSite.guidePage.assertIsOpen();
+        estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.AGENDA);
+        estrellaDammSite.agendaPage.assertIsOpen();
+        EventItem selectedEvent = estrellaDammSite.agendaPage.pickSpecificEvent("first");
+        estrellaDammSite.agendaPage.clickOnFavoriteIconOnASpecificEvent(selectedEvent);
+        estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnAgenda();
+    }
 
-        SpotItem selectedSpot = estrellaDammSite.guidePage.pickSpecificResult("first");
-        estrellaDammSite.guidePage.clickOnASpecificSpot(selectedSpot);
-        estrellaDammSite.spotDetailsPage.assertIsOpen();
-        estrellaDammSite.spotDetailsPage.clickOnFavoriteIconOnBanner();
-        estrellaDammSite.register2Component.failIfIsNotDisplayedOnDetails();
+    @Test //TC64
+    public void registerFormOnEventDetails() throws Exception {
+        mainAccessFlow();
+        estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.AGENDA);
+        estrellaDammSite.agendaPage.assertIsOpen();
+        EventItem selectedEvent = estrellaDammSite.agendaPage.pickSpecificEvent("first");
+        estrellaDammSite.agendaPage.clickOnASpecificEvent(selectedEvent);
+        estrellaDammSite.eventDetailsPage.assertIsOpen();
+        estrellaDammSite.eventDetailsPage.clickOnFavoriteIconOnBanner();
+        estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnDetailsPage();
     }
 
 }
