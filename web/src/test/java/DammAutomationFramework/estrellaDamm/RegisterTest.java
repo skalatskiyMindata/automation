@@ -44,14 +44,14 @@ public class RegisterTest {
         estrellaDammSite.mainPage.assertIsOpen();
     }
 
-    @Test //TC60
+    @Test //R1
     public void registerFormOnHomePage() throws Exception {
         mainAccessFlow();
         estrellaDammSite.mainPage.clickOnLoginRegisterIcon();
         estrellaDammSite.registerComponent.failIfIsNotDisplayed();
     }
 
-    @Test //TC61
+    @Test //R2
     public void registerFormOnGuiaPage() throws Exception {
         mainAccessFlow();
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_GUIDE);
@@ -61,7 +61,7 @@ public class RegisterTest {
         estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnGuia();
     }
 
-    @Test //TC62
+    @Test //R3
     public void registerFormOnSpotDetails() throws Exception {
         mainAccessFlow();
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_GUIDE);
@@ -73,7 +73,7 @@ public class RegisterTest {
         estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnDetailsPage();
     }
 
-    @Test //TC63
+    @Test //R5
     public void registerFormOnAgendaPage() throws Exception {
         mainAccessFlow();
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.AGENDA);
@@ -83,7 +83,7 @@ public class RegisterTest {
         estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnAgenda();
     }
 
-    @Test //TC64
+    @Test //R6
     public void registerFormOnEventDetails() throws Exception {
         mainAccessFlow();
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.AGENDA);
