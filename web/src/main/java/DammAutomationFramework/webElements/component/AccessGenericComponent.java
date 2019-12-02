@@ -21,7 +21,6 @@ public class AccessGenericComponent extends WebRepository {
     @FindBy(css = "div#modal-login-sorteo") private WebElement sorteoAccessContainer;
     @FindBy(css = "div#register-account4") private WebElement sorteoRegisterForm;
 
-
     public void failIfIsNotDisplayedOnGuia() {
         assertIsDisplayed(resultsAccessContainer);
         assertIsDisplayed(resultsRegisterForm);
