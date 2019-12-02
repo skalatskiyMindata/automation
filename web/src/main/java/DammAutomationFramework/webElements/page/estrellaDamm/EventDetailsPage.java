@@ -4,6 +4,7 @@ import com.github.webdriverextensions.WebRepository;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static DammAutomationFramework.config.Properties.General.PAGE_LOAD_TIMEOUT;
 import static com.github.webdriverextensions.Bot.assertIsDisplayed;
 import static com.github.webdriverextensions.Bot.waitForPageToLoad;
 
@@ -16,7 +17,7 @@ public class EventDetailsPage extends WebRepository {
     @FindBy(css = "section#agenda") private WebElement eventContent;
 
     public void assertIsOpen() {
-        waitForPageToLoad();
+        waitForPageToLoad(PAGE_LOAD_TIMEOUT);
         assertIsDisplayed(eventDetailsMainBody);
         assertIsDisplayed(eventBanner);
         assertIsDisplayed(eventContent);

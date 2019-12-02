@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static DammAutomationFramework.config.Properties.General.PAGE_LOAD_TIMEOUT;
 import static com.github.webdriverextensions.Bot.*;
 
 public class SpotDetailsPage extends WebRepository {
@@ -18,7 +19,7 @@ public class SpotDetailsPage extends WebRepository {
     @FindBy(css = "div.laguia") private WebElement spotContent;
 
     public void assertIsOpen() {
-        waitForPageToLoad();
+        waitForPageToLoad(PAGE_LOAD_TIMEOUT);
         assertIsDisplayed(spotDetailsMainBody);
         assertIsDisplayed(spotBanner);
         assertIsDisplayed(subTitle);

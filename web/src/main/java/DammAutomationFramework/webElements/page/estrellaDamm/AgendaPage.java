@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static DammAutomationFramework.config.Properties.General.PAGE_LOAD_TIMEOUT;
 import static com.github.webdriverextensions.Bot.*;
 
 public class AgendaPage extends WebRepository {
@@ -16,7 +17,7 @@ public class AgendaPage extends WebRepository {
     @FindBy(css = "a[id*=event-]") private List<EventItem> eventResults;
 
     public void assertIsOpen() {
-        waitForPageToLoad();
+        waitForPageToLoad(PAGE_LOAD_TIMEOUT);
         assertIsDisplayed(agendaMainContainer);
     }
 

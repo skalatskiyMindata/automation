@@ -12,12 +12,12 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static DammAutomationFramework.config.Properties.General.PAGE_LOAD_TIMEOUT;
 import static com.github.webdriverextensions.Bot.driver;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 @RunWith(WebDriverRunner.class)
 // @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
-//@Chrome
 @Firefox
 // @RemoteAddress(Properties.General.REMOTE_ADDRESS)
 @ScreenshotsPath(Properties.General.SCREENSHOT_PATH)
@@ -32,7 +32,7 @@ public class RegisterTest {
 
     @Before
     public void configure() {
-        driver().manage().timeouts().pageLoadTimeout(30, SECONDS);
+        driver().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, SECONDS);
     }
 
     public void mainAccessFlow () {

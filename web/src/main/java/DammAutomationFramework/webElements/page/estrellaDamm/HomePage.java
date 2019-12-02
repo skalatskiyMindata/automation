@@ -6,6 +6,7 @@ import com.github.webdriverextensions.WebPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import static DammAutomationFramework.config.Properties.General.PAGE_LOAD_TIMEOUT;
 import static com.github.webdriverextensions.Bot.*;
 import static java.lang.String.format;
 
@@ -36,7 +37,7 @@ public class HomePage extends WebPage {
 
     @Override
     public void assertIsOpen(Object... arguments) {
-        waitForPageToLoad();
+        waitForPageToLoad(PAGE_LOAD_TIMEOUT);
         assertIsDisplayed(introVideoSection);
 //        assertIsDisplayed(dammInfoSection);
 //        assertIsDisplayed(laGuiaSection);
