@@ -10,7 +10,8 @@ import static com.github.webdriverextensions.Bot.waitForPageToLoad;
 public class EventDetailsPage extends WebRepository {
 
     @FindBy(css = ".page-node-type-event") private WebElement eventDetailsMainBody;
-    @FindBy(css = "ficha-agenda") private WebElement eventBanner;
+    @FindBy(css = "section[data-section-name=\"ficha-agenda\"]") private WebElement eventBanner;
+    @FindBy(css = ".banner-main-page button.btn-contest-info") private WebElement participateButton;
     @FindBy(css = ".list-rrss a.favourite") private WebElement favouriteIconBanner;
     @FindBy(css = "section#agenda") private WebElement eventContent;
 
@@ -23,5 +24,9 @@ public class EventDetailsPage extends WebRepository {
 
     public void clickOnFavoriteIconOnBanner () {
         favouriteIconBanner.click();
+    }
+
+    public void clickOnParticipateOnBanner() {
+        participateButton.click();
     }
 }

@@ -40,4 +40,8 @@ public class AgendaPage extends WebRepository {
     public void clickOnFavoriteIconOnASpecificEvent (EventItem eventItem) {
         eventItem.favoriteIcon.click();
     }
+
+    public void clickOnActiveButtonOnASpecificEvent (EventItem eventItem) {
+        eventItem.button.click();
+    }
 }

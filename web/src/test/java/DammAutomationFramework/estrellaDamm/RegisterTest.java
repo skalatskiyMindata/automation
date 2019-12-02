@@ -6,10 +6,8 @@ import DammAutomationFramework.webElements.EstrellaDammSite;
 import DammAutomationFramework.webElements.component.EventItem;
 import DammAutomationFramework.webElements.component.SpotItem;
 import com.github.webdriverextensions.junitrunner.WebDriverRunner;
-import com.github.webdriverextensions.junitrunner.annotations.Firefox;
-import com.github.webdriverextensions.junitrunner.annotations.ScreenshotsPath;
-import org.junit.Before;
-import org.junit.Test;
+import com.github.webdriverextensions.junitrunner.annotations.*;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +21,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @Firefox
 // @RemoteAddress(Properties.General.REMOTE_ADDRESS)
 @ScreenshotsPath(Properties.General.SCREENSHOT_PATH)
-//@TakeScreenshotOnFailure
+@TakeScreenshotOnFailure
 
 public class RegisterTest {
 
@@ -47,7 +45,7 @@ public class RegisterTest {
     @Test //R1
     public void registerFormOnHomePage() throws Exception {
         mainAccessFlow();
-        estrellaDammSite.mainPage.clickOnLoginRegisterIcon();
+        estrellaDammSite.topBarComponent.clickOnLoginRegisterIcon();
         estrellaDammSite.registerComponent.failIfIsNotDisplayed();
     }
 
@@ -73,9 +71,23 @@ public class RegisterTest {
         estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnDetailsPage();
     }
 
+    @Test //R4
+    public void registerFormOnPromotions() throws Exception {
+        mainAccessFlow();
+        estrellaDammSite.topBarComponent.fillAndSelectLocation("Cataluña");
+        estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.AGENDA);
+        estrellaDammSite.agendaPage.assertIsOpen();
+        EventItem selectedEvent = estrellaDammSite.agendaPage.pickSpecificEvent("participa");
+        estrellaDammSite.agendaPage.clickOnActiveButtonOnASpecificEvent(selectedEvent);
+        estrellaDammSite.eventDetailsPage.assertIsOpen();
+        estrellaDammSite.eventDetailsPage.clickOnParticipateOnBanner();
+        estrellaDammSite.accessGenericComponent.failIfIsNotDisplayedOnSorteo();
+    }
+
     @Test //R5
     public void registerFormOnAgendaPage() throws Exception {
         mainAccessFlow();
+        estrellaDammSite.topBarComponent.fillAndSelectLocation("Cataluña");
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.AGENDA);
         estrellaDammSite.agendaPage.assertIsOpen();
         EventItem selectedEvent = estrellaDammSite.agendaPage.pickSpecificEvent("first");
@@ -86,6 +98,7 @@ public class RegisterTest {
     @Test //R6
     public void registerFormOnEventDetails() throws Exception {
         mainAccessFlow();
+        estrellaDammSite.topBarComponent.fillAndSelectLocation("Cataluña");
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.AGENDA);
         estrellaDammSite.agendaPage.assertIsOpen();
         EventItem selectedEvent = estrellaDammSite.agendaPage.pickSpecificEvent("first");

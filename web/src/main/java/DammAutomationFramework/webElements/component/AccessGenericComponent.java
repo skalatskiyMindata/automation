@@ -17,6 +17,10 @@ public class AccessGenericComponent extends WebRepository {
     @FindBy(css = "div#modal-login") private WebElement detailsAccessContainer;
     @FindBy(css = "div#register-account3") private WebElement detailsRegisterForm;
 
+    // For sorteo
+    @FindBy(css = "div#modal-login-sorteo") private WebElement sorteoAccessContainer;
+    @FindBy(css = "div#register-account4") private WebElement sorteoRegisterForm;
+
 
     public void failIfIsNotDisplayedOnGuia() {
         assertIsDisplayed(resultsAccessContainer);
@@ -31,5 +35,10 @@ public class AccessGenericComponent extends WebRepository {
     public void failIfIsNotDisplayedOnAgenda() {
         assertIsDisplayed(detailsAccessContainer);
         assertIsDisplayed(resultsRegisterForm);
+    }
+
+    public void failIfIsNotDisplayedOnSorteo() {
+        assertIsDisplayed(sorteoAccessContainer);
+        assertIsDisplayed(sorteoRegisterForm);
     }
 }
