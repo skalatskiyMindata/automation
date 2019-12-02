@@ -17,7 +17,6 @@ public class HomePage extends WebPage {
     @FindBy(id = "pano_slider") private WebElement laGuiaSection;
     @FindBy(id = "pano_agenda") private WebElement agendaSection;
     @FindBy(id = "pano_welcome") private WebElement tuRinconSection;
-    @FindBy(css = "#btn-open-canvas-login-register span") private WebElement loginRegister;
 
     @FindBy(css = "div.block-main-prehome")
     public AgeCheckComponent ageCheckComponent;
@@ -47,12 +46,5 @@ public class HomePage extends WebPage {
 
     public void clickOnAccessOnAgeCheck() {
         accessButton.click();
-    }
-
-    public void clickOnLoginRegisterIcon() {
-        loginRegister.isEnabled();
-        loginRegister.getSize();
-        loginRegister.getLocation();
-        loginRegister.click();
     }
 }

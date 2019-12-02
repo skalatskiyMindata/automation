@@ -48,7 +48,7 @@ public class RegisterFlowTest {
         estrellaDammSite.cookiesComponent.clickOnAcceptCookies();
         estrellaDammSite.mainPage.clickOnAccessOnAgeCheck();
         estrellaDammSite.mainPage.assertIsOpen();
-        estrellaDammSite.mainPage.clickOnLoginRegisterIcon();
+        estrellaDammSite.topBarComponent.clickOnLoginRegisterIcon();
         estrellaDammSite.registerComponent.failIfIsNotDisplayed();
         estrellaDammSite.registerComponent.fillRequiredData(userDetails);
         estrellaDammSite.registerComponent.selectCheckBoxes();
