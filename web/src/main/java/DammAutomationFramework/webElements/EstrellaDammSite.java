@@ -3,6 +3,7 @@ package DammAutomationFramework.webElements;
 import DammAutomationFramework.webElements.component.CookiesComponent;
 import DammAutomationFramework.webElements.component.AccessGenericComponent;
 import DammAutomationFramework.webElements.component.RegisterComponent;
+import DammAutomationFramework.webElements.component.TopBarComponent;
 import DammAutomationFramework.webElements.page.estrellaDamm.*;
 import com.github.webdriverextensions.WebSite;
 import org.slf4j.Logger;
@@ -22,6 +23,7 @@ public class EstrellaDammSite extends WebSite {
     public CookiesComponent cookiesComponent;
     public RegisterComponent registerComponent;
     public AccessGenericComponent accessGenericComponent;
+    public TopBarComponent topBarComponent;
 
     // Pages
     public HomePage mainPage;
