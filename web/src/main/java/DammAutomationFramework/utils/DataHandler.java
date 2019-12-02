@@ -28,7 +28,7 @@ public class DataHandler {
                 String optionText = option.getAttribute("innerText");
                 System.out.println("optionText: " + optionText);
 
-                if (optionText.contains(optionToSelect)) {
+                if (optionText.toLowerCase().contains(optionToSelect.toLowerCase())) {
                     return option;
                 }
             }
