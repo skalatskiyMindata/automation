@@ -6,78 +6,6 @@ import javax.mail.*;
 import java.util.Properties;
 
 public class IMAPClient {
-    public static void check(String host, String username,
-                             String password)
-    {
-        /* For try 2
-        IMAPFolder folder = null;
-        Store store = null;
-        String subject = null;
-        Flags.Flag flag = null;
-         */
-
-        try {
-            // IMAP 1st try - works fine
-            //create properties field
-            ///*
-            Properties properties = new Properties();
-
-            properties.setProperty("mail.imap.ssl.enable", "true");
-            // set any other needed mail.imap.* properties here
-            Session session = Session.getInstance(properties);
-            Store store = session.getStore("imap");
-            store.connect(host, username, password);
-
-            System.out.println("After connection...");
-            //*/
-
-            /* IMAP 2nd try - works fine
-            Properties props = System.getProperties();
-            props.setProperty("mail.store.protocol", "imaps");
-
-            Session session = Session.getDefaultInstance(props, null);
-
-            System.out.println("Props: " + props);
-
-            store = session.getStore("imaps");
-
-            System.out.println("getting Store....");
-
-            store.connect("imap.googlemail.com",username, password);
-
-            System.out.println("After connection...");
-             */
-
-            //create the folder object and open it
-            Folder emailFolder = store.getFolder("INBOX");
-            emailFolder.open(Folder.READ_ONLY);
-
-            // retrieve the messages from the folder in an array and print it
-            Message[] messages = emailFolder.getMessages();
-            System.out.println("messages.length---" + messages.length);
-
-            for (int i = 0, n = messages.length; i < n; i++) {
-                Message message = messages[i];
-                System.out.println("---------------------------------");
-                System.out.println("Email Number " + (i + 1));
-                System.out.println("Subject: " + message.getSubject());
-                System.out.println("From: " + message.getFrom()[0]);
-                System.out.println("Text: " + message.getContent().toString());
-
-            }
-
-            //close the store and folder objects
-            emailFolder.close(false);
-            store.close();
-
-        } catch (NoSuchProviderException e) {
-            e.printStackTrace();
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public static void main(String[] args) {
 
@@ -87,13 +15,60 @@ public class IMAPClient {
 
         System.out.println("Starting...");
 
-        check(host, username, password);
-
+        retriveAllMessages(host, username, password);
     }
 
+    // retrive all mails
+    private static Message[] retriveAllMessages(String host, String username, String password) {
+        try {
+            // IMAP 1st try - works fine
+            Properties properties = new Properties();
+            properties.setProperty("mail.imap.ssl.enable", "true");
+            Session session = Session.getInstance(properties);
+            Store store = session.getStore("imap");
+            store.connect(host, username, password);
 
-    //METHODS
+            System.out.println("After connection...");
+
+            //create the folder object and open it
+            Folder emailFolder = store.getFolder("INBOX");
+            emailFolder.open(Folder.READ_ONLY);
+
+            // retrieve the messages from the folder in an array and print it
+            Message[] messages = emailFolder.getMessages();
+            System.out.println("messages.length---" + messages.length);
+
+            //close the store and folder objects
+            emailFolder.close(false);
+            store.close();
+
+            return messages;
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
+
+            throw new Error("Failed trying to retrive mails: " + e);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            throw new Error("Failed trying to retrive mails: " + e);
+        }
+    }
+
     // get mails with specific subject
     // get mails since specific moment
     // get mails from specific sender
+    private void processMessages(Message[] messages) {
+        try {
+            for (Message message: messages) {
+                System.out.println("---------------------------------");
+                System.out.println("Subject: " + message.getSubject());
+                System.out.println("From: " + message.getFrom()[0]);
+                System.out.println("Text: " + message.getContent().toString());
+            }
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
