@@ -1,6 +1,6 @@
 package DammAutomationFramework.estrellaDamm;
 
-import DammAutomationFramework.drivers.ChromeCapabilities;
+import DammAutomationFramework.config.ChromeCapabilities;
 import DammAutomationFramework.webElements.EstrellaDammSite;
 import com.github.webdriverextensions.junitrunner.WebDriverRunner;
 import com.github.webdriverextensions.junitrunner.annotations.Chrome;
@@ -16,8 +16,8 @@ import org.testng.annotations.Test;
 @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
 @Firefox
 // @RemoteAddress("http://jenkins.damm.com:4444/wd/hub")
-@ScreenshotsPath("/Users/skalatskiy/Develop/Mindata/DAMM/damm-automation-framework/web/screenshots")
+@ScreenshotsPath("/Users/mflip/Work/Mindata/DAMM/damm-automation-framework/web/screenshots")
 @TakeScreenshotOnFailure
-@Suite.SuiteClasses({CervezaTest.class, PeliculasTest.class, RegistroTest.class})
+@Suite.SuiteClasses({CervezaTest.class, PeliculasTest.class})
 public class SmokeTests {
 }

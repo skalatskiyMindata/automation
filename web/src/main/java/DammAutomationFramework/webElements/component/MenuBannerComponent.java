@@ -16,7 +16,7 @@ public class MenuBannerComponent extends WebRepository {
     @FindBy(id = "es-acto-ii-amantes") private WebElement acto2AmantesButton;
     @FindBy(id = "es-acto-i-alma") private WebElement acto1AlmaButton;
     @FindBy(id = "es-cyrano") private WebElement cyranoButton;
-    @FindBy(className = "") private WebElement theBeer;
+    @FindBy(css = ".menu_La_Cerveza a") private WebElement theBeer;
     @FindBy(css = ".menu_Cómo_la_hacemos a") private WebElement howDoWeMadeItLink;
     @FindBy(css = ".menu_El_día_a_día a") private WebElement dayToDayLink;
     @FindBy(css = ".menu_Sostenibilidad a") private WebElement sustainability;

@@ -27,6 +27,9 @@ public class EstrellaDammSite extends WebSite {
 
     // Pages
     public HomePage mainPage;
+    public CervezaPage cervezaPage;
+    public CervezaDiaADiaPage cervezaDiaADiaPage;
+    public PeliculasPage peliculasPage;
     public GuidePage guidePage;
     public AgendaPage agendaPage;
     public SpotDetailsPage spotDetailsPage;

@@ -1,9 +1,9 @@
 package DammAutomationFramework.estrellaDamm;
 
+import DammAutomationFramework.config.ChromeCapabilities;
 import DammAutomationFramework.config.Properties;
 import DammAutomationFramework.data.LocationDetails;
 import DammAutomationFramework.data.UserDetails;
-import DammAutomationFramework.drivers.ChromeCapabilities;
 import DammAutomationFramework.utils.DataHandler;
 import DammAutomationFramework.webElements.EstrellaDammSite;
 import com.github.webdriverextensions.junitrunner.WebDriverRunner;

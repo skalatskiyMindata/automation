@@ -50,16 +50,7 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <drivers>
-                        <driver>
-                            <name>chromedriver</name>
-                            <platform>mac</platform>
-                            <bit>64</bit>
-                            <version>78.0.3904.105</version>
-                        </driver>
-                    </drivers>
-                </configuration>
+
             </plugin>
             <!-- Speed up your tests by running them in parallel -->
             <plugin>
