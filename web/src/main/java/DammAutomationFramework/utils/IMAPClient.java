@@ -1,49 +1,44 @@
 package DammAutomationFramework.utils;
 
-import com.sun.mail.imap.IMAPFolder;
+import DammAutomationFramework.data.Email;
 
 import javax.mail.*;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 public class IMAPClient {
 
-    public static void main(String[] args) {
+    private static String HOST = "imap.gmail.com";
+    private static String USERNAME = "dummytestmindata@gmail.com";
+    private static String PASSWORD = "MDTest1234";
 
-        String host = "imap.gmail.com";
-        String username = "dummytestmindata@gmail.com";
-        String password = "MDTest1234";
+    public static void failIfMailIsNotReceived(String sender, String subject) {
+        List<Email> emails = retrieveAllMessages(HOST, USERNAME, PASSWORD);
 
-        System.out.println("Starting...");
-
-        Message[] allMessages = retriveAllMessages(host, username, password);
-
-        System.out.println("messages.length---" + allMessages.length);
+        filterMessages(emails, 120, sender, subject);
     }
 
-    // retrive all mails
-    private static Message[] retriveAllMessages(String host, String username, String password) {
+    // retrieve all mails
+    private static List<Email> retrieveAllMessages(String host, String username, String password) {
         try {
-            // IMAP 1st try - works fine
             Properties properties = new Properties();
             properties.setProperty("mail.imap.ssl.enable", "true");
             Session session = Session.getInstance(properties);
             Store store = session.getStore("imap");
             store.connect(host, username, password);
-
-            System.out.println("After connection...");
-
-            //create the folder object and open it
             Folder emailFolder = store.getFolder("INBOX");
             emailFolder.open(Folder.READ_ONLY);
-
-            // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
-
-            //close the store and folder objects
+            // TODO: Implement search term concept
+            List<Email> emails = convertToEmails(messages);
             emailFolder.close(false);
             store.close();
 
-            return messages;
+            return emails;
+
         } catch (NoSuchProviderException e) {
             e.printStackTrace();
 
@@ -55,21 +50,51 @@ public class IMAPClient {
         }
     }
 
-    // get mails with specific subject
-    // get mails since specific moment
-    // get mails from specific sender
-    private void processMessages(Message[] messages) {
+    private static List<Email> convertToEmails(Message[] messages) {
+        List<Email> emails = new ArrayList<Email>();
+
         try {
-            for (Message message: messages) {
-                System.out.println("---------------------------------");
-                System.out.println("Subject: " + message.getSubject());
-                System.out.println("From: " + message.getFrom()[0]);
-                System.out.println("Text: " + message.getContent().toString());
+            for (Message message : messages) {
+                emails.add(new Email(message.getSubject(),
+                        message.getFrom()[0].toString(),
+                        message.getReceivedDate(),
+                        message.getContent().toString()) {
+                });
             }
+
+            return emails;
+
         } catch (MessagingException e) {
             e.printStackTrace();
+
+            throw new Error(e);
         } catch (Exception e) {
             e.printStackTrace();
+
+            throw new Error(e);
         }
+    }
+
+    // TODO: Improve filter logic
+    private static List<Email> filterMessages(List<Email> emails, int sinceWhen, String fromWho, String subject) {
+        Instant sinceWhenMoment = new Date().toInstant().minusSeconds(sinceWhen);
+        List<Email> filteredEmails = new ArrayList<>();
+
+        for (Email email : emails) {
+            if (email.date.toInstant().isAfter(sinceWhenMoment)) {
+                if (Validation.doesString1ContainString2(email.from, fromWho)) {
+                    if (Validation.doesString1ContainString2(email.subject, subject)) {
+                        filteredEmails.add(email);
+                    }
+                }
+            }
+
+        }
+
+        if (filteredEmails.isEmpty()) {
+            throw new Error("Mails not found from '" + fromWho + "' sender, after '" + sinceWhenMoment + "' and '" + subject + "' subject.");
+        }
+
+        return emails;
     }
 }
