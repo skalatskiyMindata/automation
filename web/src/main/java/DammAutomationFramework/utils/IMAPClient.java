@@ -15,7 +15,9 @@ public class IMAPClient {
 
         System.out.println("Starting...");
 
-        retriveAllMessages(host, username, password);
+        Message[] allMessages = retriveAllMessages(host, username, password);
+
+        System.out.println("messages.length---" + allMessages.length);
     }
 
     // retrive all mails
@@ -36,7 +38,6 @@ public class IMAPClient {
 
             // retrieve the messages from the folder in an array and print it
             Message[] messages = emailFolder.getMessages();
-            System.out.println("messages.length---" + messages.length);
 
             //close the store and folder objects
             emailFolder.close(false);
