@@ -25,6 +25,17 @@
             <version>6.10</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>3.7.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -39,7 +50,7 @@
             </plugin>
 
             <!-- Downloads and installs the drivers -->
-            <plugin>
+            <!--<plugin>
                 <groupId>com.github.webdriverextensions</groupId>
                 <artifactId>webdriverextensions-maven-plugin</artifactId>
                 <version>3.2.0</version>
@@ -60,7 +71,7 @@
                         </driver>
                     </drivers>
                 </configuration>
-            </plugin>
+            </plugin>-->
             <!-- Speed up your tests by running them in parallel -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
