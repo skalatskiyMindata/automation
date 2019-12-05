@@ -22,10 +22,10 @@ import static com.github.webdriverextensions.Bot.*;
 @ScreenshotsPath(Properties.General.SCREENSHOT_PATH)
 @TakeScreenshotOnFailure
 
-public class RegistroTest {
+public class RegisterFlowTest {
 
     // Logger
-    private static final Logger log = LoggerFactory.getLogger(RegistroTest.class);
+    private static final Logger log = LoggerFactory.getLogger(RegisterFlowTest.class);
     private DataHandler dataHandler = new DataHandler();
     private EstrellaDammSite estrellaDammSite;
 
@@ -48,8 +48,7 @@ public class RegistroTest {
         estrellaDammSite.cookiesComponent.clickOnAcceptCookies();
         estrellaDammSite.mainPage.clickOnAccessOnAgeCheck();
         estrellaDammSite.mainPage.assertIsOpen();
-        estrellaDammSite.mainPage.clickOnLoginRegisterIcon();
-        // waitFor(10000);
+        estrellaDammSite.topBarComponent.clickOnLoginRegisterIcon();
         estrellaDammSite.registerComponent.failIfIsNotDisplayed();
         estrellaDammSite.registerComponent.fillRequiredData(userDetails);
         estrellaDammSite.registerComponent.selectCheckBoxes();
