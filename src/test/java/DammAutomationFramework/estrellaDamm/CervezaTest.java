@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @RunWith(WebDriverRunner.class)
 @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
 @Firefox
-// @RemoteAddress("http://jenkins.damm.com:4444/wd/hub")
+@RemoteAddress("http://jenkins.damm.com:4444/wd/hub")
 @ScreenshotsPath("/Users/skalatskiy/Develop/Mindata/DAMM/damm-automation-framework/web/screenshots")
 @TakeScreenshotOnFailure
 public class CervezaTest {
