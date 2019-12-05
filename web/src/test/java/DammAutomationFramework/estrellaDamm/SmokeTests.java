@@ -18,6 +18,6 @@ import org.testng.annotations.Test;
 // @RemoteAddress("http://jenkins.damm.com:4444/wd/hub")
 @ScreenshotsPath("/Users/skalatskiy/Develop/Mindata/DAMM/damm-automation-framework/web/screenshots")
 @TakeScreenshotOnFailure
-@Suite.SuiteClasses({CervezaTest.class, PeliculasTest.class, RegistroTest.class})
+@Suite.SuiteClasses({CervezaTest.class, PeliculasTest.class})
 public class SmokeTests {
 }

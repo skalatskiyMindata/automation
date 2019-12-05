@@ -20,15 +20,20 @@ public class Selector {
 
     public WebElement selectAnOption (String optionToSelect) {
         System.out.println("optionToSelect: " + optionToSelect);
+        List<WebElement> options = this.returnAllOptions();
 
-        for (WebElement option: this.returnAllOptions()) {
-            String optionText = option.getText();
-            String optionValue = option.getAttribute("value");
-            System.out.println("optionText: " + optionText);
-            System.out.println("optionValue: " + optionValue);
+        if (optionToSelect.equalsIgnoreCase("first")) {
+            return options.get(0);
+        } else {
+            for (WebElement option: options) {
+                String optionText = option.getText();
+                String optionValue = option.getAttribute("value");
+                System.out.println("optionText: " + optionText);
+                System.out.println("optionValue: " + optionValue);
 
-            if (optionText.contains(optionToSelect)) {
-                return option;
+                if (optionText.contains(optionToSelect)) {
+                    return option;
+                }
             }
         }
 
