@@ -22,6 +22,7 @@ public class TopBarComponent extends WebRepository {
     }
 
     public void fillAndSelectLocation(String location) {
+        locationInput.clear();
         locationInput.sendKeys(location);
 
         WebElement selectedLocation = DataHandler.pickAnOption(location, locationResults);

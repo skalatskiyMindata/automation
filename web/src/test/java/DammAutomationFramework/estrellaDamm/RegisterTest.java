@@ -19,7 +19,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @RunWith(WebDriverRunner.class)
 // @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
 @Firefox
-// @RemoteAddress(Properties.General.REMOTE_ADDRESS)
+@RemoteAddress(Properties.General.REMOTE_ADDRESS)
 @ScreenshotsPath(Properties.General.SCREENSHOT_PATH)
 @TakeScreenshotOnFailure
 
@@ -35,7 +35,7 @@ public class RegisterTest {
         driver().manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, SECONDS);
     }
 
-    public void mainAccessFlow () {
+    public void mainAccessFlow() {
         estrellaDammSite.mainPage.open(url);
         estrellaDammSite.cookiesComponent.clickOnAcceptCookies();
         estrellaDammSite.mainPage.clickOnAccessOnAgeCheck();
@@ -43,7 +43,7 @@ public class RegisterTest {
     }
 
     @Test //R1
-    public void registerFormOnHomePage() throws Exception {
+    public void registerFormOnHomePage() {
         mainAccessFlow();
         estrellaDammSite.topBarComponent.clickOnLoginRegisterIcon();
         estrellaDammSite.registerComponent.failIfIsNotDisplayed();
