@@ -2,6 +2,7 @@ package DammAutomationFramework.estrellaDamm;
 
 import DammAutomationFramework.config.Properties;
 import DammAutomationFramework.data.enums.MenuOption;
+import DammAutomationFramework.driver.ChromeCapabilities;
 import DammAutomationFramework.webElements.EstrellaDammSite;
 import DammAutomationFramework.webElements.component.EventItem;
 import DammAutomationFramework.webElements.component.SpotItem;
@@ -17,7 +18,7 @@ import static com.github.webdriverextensions.Bot.driver;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 @RunWith(WebDriverRunner.class)
-// @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
+@Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
 @Firefox
 @RemoteAddress(Properties.General.REMOTE_ADDRESS)
 @ScreenshotsPath(Properties.General.SCREENSHOT_PATH)
