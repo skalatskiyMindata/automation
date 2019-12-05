@@ -4,8 +4,8 @@ import DammAutomationFramework.drivers.ChromeCapabilities;
 import DammAutomationFramework.webElements.EstrellaDammSite;
 import com.github.webdriverextensions.junitrunner.WebDriverRunner;
 import com.github.webdriverextensions.junitrunner.annotations.*;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.testng.annotations.Test;
 
 @RunWith(WebDriverRunner.class)
 @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
