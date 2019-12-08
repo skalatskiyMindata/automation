@@ -25,6 +25,9 @@ public class HomePage extends WebPage {
     @FindBy(css = "button.js-close-prehome")
     public WebElement accessButton;
 
+    @FindBy(id = "Wifrm")
+    private WebElement pixel;
+
     public MenuBannerComponent menuBanner;
 
     @Override
@@ -47,5 +50,9 @@ public class HomePage extends WebPage {
 
     public void clickOnAccessOnAgeCheck() {
         accessButton.click();
+    }
+
+    public void assertPixelEnabled(){
+        assertIsEnabled(pixel);
     }
 }

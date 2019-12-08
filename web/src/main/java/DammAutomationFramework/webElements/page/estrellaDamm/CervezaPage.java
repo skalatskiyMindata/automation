@@ -23,11 +23,19 @@ public class CervezaPage extends WebRepository {
     })
     private List<WebElement> sections;
 
+    @FindBy(id = "Wifrm")
+    private WebElement pixel;
+
     public void assertIsOpen(Object... arguments) {
         for (WebElement item: sections){
             scrollTo(item);
             assertIsDisplayed(item);
             //waitFor(3);
         }
+    }
+
+    public void assertPixelEnabled() {
+
+        assertIsEnabled(pixel);
     }
 }

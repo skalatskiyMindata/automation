@@ -29,6 +29,8 @@ public class RegisterComponent extends WebRepository {
     @FindBy(id = "user-modal-registre") private WebElement modalRegistered;
     @FindBy(css = "#user-modal-registre a.btn-primary") private WebElement continueButton;
 
+    @FindBy(xpath = "//div[@class='register-email']//div[2]//div[1]//div[1]//div[2]") private WebElement emailError;
+
 
     //methods
     public void failIfIsNotDisplayed() {
@@ -68,5 +70,9 @@ public class RegisterComponent extends WebRepository {
     public void failIfConfirmationModalIsNotDisplayed() {
         waitForElementToDisplay(modalRegistered);
         assertIsDisplayed(modalRegistered);
+    }
+    public void failEmailInUse() {
+        waitForElementToDisplay(emailError);
+        assertIsDisplayed(emailError);
     }
 }

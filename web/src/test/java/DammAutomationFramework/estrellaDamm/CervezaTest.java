@@ -43,32 +43,32 @@ public class CervezaTest {
         estrellaDammSite.mainPage.clickOnAccessOnAgeCheck();
     }
 
+    @Test
+    public void checkPixel(){
+        mainAccessFlow();
+        estrellaDammSite.peliculasPage.assertPixelEnabled();
+    }
+
     @Test //C1
     public void clickMenuCervezaPage() throws Exception {
         estrellaDammSite.mainPage.open(homeUrl);
         estrellaDammSite.cookiesComponent.clickOnAcceptCookies();
         estrellaDammSite.mainPage.clickOnAccessOnAgeCheck();
         estrellaDammSite.mainPage.menuBanner.selectMenuOption(MenuOption.THE_BEER);
-        waitFor(2);
-estrellaDammSite.cervezaPage.assertIsOpen();
-        //waitForPageToLoad(2);
-        //assertCurrentUrlEquals(url);
-        //estrellaDammSite.cervezaPage.assertIsOpen();
-        //waitFor(4);
+        estrellaDammSite.cervezaPage.assertIsOpen();
+        assertCurrentUrlEquals(url);
     }
 
     @Test //C2
     public void checkElementsOnCervezaPage() throws Exception {
         mainAccessFlow();
         estrellaDammSite.cervezaPage.assertIsOpen();
-        //waitFor(4);
     }
 
     @Test //C3
     public void checkElementsOnCervezaDiaADiaPage() throws Exception {
         mainAccessFlow();
         estrellaDammSite.cervezaDiaADiaPage.assertIsOpen();
-        //waitFor(4);
     }
 
 }

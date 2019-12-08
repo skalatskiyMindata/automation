@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static DammAutomationFramework.utils.Waiter.waitUntilElementIsNotDisplayed;
 import static com.github.webdriverextensions.Bot.*;
 
 public class PeliculasPage extends WebRepository {
@@ -40,6 +41,9 @@ public class PeliculasPage extends WebRepository {
     @FindBy(className = "btn-menu")
     private WebElement menu;
 
+    @FindBy(id = "Wifrm")
+    private WebElement pixel;
+
 
     public void assertIsOpen(Object... arguments) {
 
@@ -54,9 +58,11 @@ public class PeliculasPage extends WebRepository {
         playBtn.click();
     }
 
-
-    public void menuIsHidden() throws Exception {
-        waitFor(5);
-        assertIsNotDisplayed(menu);
+    public void assertMenuIsHidden() throws Exception {
+        waitUntilElementIsNotDisplayed(menu);
       }
+
+      public void assertPixelEnabled(){
+        assertIsEnabled(pixel);
+    }
 }
