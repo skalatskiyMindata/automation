@@ -10,13 +10,14 @@ import com.github.webdriverextensions.junitrunner.annotations.TakeScreenshotOnFa
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.testng.annotations.Test;
+
+import static DammAutomationFramework.config.Properties.General.SCREENSHOT_PATH;
 
 @RunWith(Suite.class)
 @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
 @Firefox
 // @RemoteAddress("http://jenkins.damm.com:4444/wd/hub")
-@ScreenshotsPath("/Users/mflip/Work/Mindata/DAMM/damm-automation-framework/web/screenshots")
+@ScreenshotsPath(SCREENSHOT_PATH)
 @TakeScreenshotOnFailure
 @Suite.SuiteClasses({CervezaTest.class, PeliculasTest.class})
 public class SmokeTests {

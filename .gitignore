@@ -1,5 +1,6 @@
 /web/screenshots/
 /web/target/
 /web/drivers/
-.idea
+/web/damm-automation-framework.iml/
 /web/src/main/java/DammAutomationFramework/config/
+.idea
