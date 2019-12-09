@@ -1,4 +1,4 @@
-package DammAutomationFramework.config;
+package DammAutomationFramework.driver;
 
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
