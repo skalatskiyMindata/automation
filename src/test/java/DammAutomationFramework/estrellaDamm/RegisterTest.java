@@ -10,8 +10,6 @@ import com.github.webdriverextensions.junitrunner.WebDriverRunner;
 import com.github.webdriverextensions.junitrunner.annotations.*;
 import org.junit.*;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static DammAutomationFramework.config.Properties.General.PAGE_LOAD_TIMEOUT;
 import static com.github.webdriverextensions.Bot.driver;
@@ -21,13 +19,10 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
 @Firefox
 @RemoteAddress(Properties.General.REMOTE_ADDRESS)
-@ScreenshotsPath(Properties.General.SCREENSHOT_PATH)
 @TakeScreenshotOnFailure
 
 public class RegisterTest {
 
-    // Logger
-    private static final Logger log = LoggerFactory.getLogger(RegisterTest.class);
     private EstrellaDammSite estrellaDammSite;
     private String url = "https://www.estrelladamm.com/";
 

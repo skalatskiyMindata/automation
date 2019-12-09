@@ -1,5 +1,6 @@
 package DammAutomationFramework.estrellaDamm;
 
+import DammAutomationFramework.config.Properties;
 import DammAutomationFramework.driver.ChromeCapabilities;
 import DammAutomationFramework.webElements.EstrellaDammSite;
 import com.github.webdriverextensions.junitrunner.WebDriverRunner;
@@ -10,18 +11,16 @@ import org.junit.runner.RunWith;
 @RunWith(WebDriverRunner.class)
 @Chrome(desiredCapabilitiesClass = ChromeCapabilities.class)
 @Firefox
-@ScreenshotsPath("/Users/skalatskiy/Develop/Mindata/DAMM/damm-automation-framework/web/screenshots")
+@RemoteAddress(Properties.General.REMOTE_ADDRESS)
 @TakeScreenshotOnFailure
+
 public class PeliculasTest {
 
     private EstrellaDammSite estrellaDammSite = new EstrellaDammSite();
 
     @Test
-    public void testPeliculas () {
-        // estrellaDammSite.mainPage.open(url);
-        // estrellaDammSite.cookiesComponent.clickOnAcceptCookies();
+    public void testPeliculas() {
         estrellaDammSite.mainPage.clickOnAccessOnAgeCheck();
         estrellaDammSite.mainPage.assertIsOpen();
-
     }
 }
